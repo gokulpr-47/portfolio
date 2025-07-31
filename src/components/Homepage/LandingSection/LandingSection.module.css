@@ -1,0 +1,25 @@
+/* styles/animations.css */
+
+/* Typing animation */
+.typing {
+  overflow: hidden; /* Ensures text is hidden initially */
+  border-right: 4px solid #fff; /* Create a cursor effect */
+  white-space: nowrap;
+  width: 0; /* Start with width 0 */
+  animation: typing 3s steps(12) 1s forwards, blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}

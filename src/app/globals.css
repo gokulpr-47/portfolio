@@ -3,31 +3,199 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-rgb: #ffffff;
+  --background-start-rgb: #0a0a1a;
+  --background-end-rgb: #1a1a2e;
+  --text-high-contrast-rgb-value: 255, 255, 255;
+  --detail-medium-contrast: rgb(200, 200, 255);
+  --text-body: rgb(220, 220, 255);
+  --detail-medium-contrast: rgb(150, 150, 255);
+  --test: #4a9eff;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: #ffffff;
+    --background-start-rgb: #0a0a1a;
+    --background-end-rgb: #1a1a2e;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--foreground-rgb);
+  background: linear-gradient(to bottom, transparent, var(--background-end-rgb))
+    var(--background-start-rgb);
+  font-size: 14px;
+
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+/* Hardware acceleration for smooth animations */
+.smooth-transition,
+.card-3d,
+.floating,
+.pulsing {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .floating,
+  .pulsing {
+    animation: none !important;
+  }
+}
+
+/* Snap scrolling for sections */
+.page {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Main container scroll snap */
+.scroll-container {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  height: 100dvh;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+/* Dark theme and sleek scrollbar design */
+::-webkit-scrollbar {
+  width: 8px; /* Sets the width of the scrollbar */
+  height: 8px; /* Sets the height for horizontal scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #333; /* Dark color for the thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+  border: 2px solid #555; /* Light border around the thumb */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #222; /* Dark background for the track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #222; /* Dark color for the corner */
+}
+
+/* Custom scrollbar for timeline */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.3) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.3);
+  border-radius: 3px;
+  border: none;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.5);
+}
+
+/* Performance optimizations for mobile */
+@media (max-width: 768px) {
+  .card-3d {
+    transform-style: flat !important;
+    perspective: none !important;
+  }
+
+  .floating,
+  .pulsing {
+    animation: none !important;
+  }
+
+  /* Reduce backdrop-filter usage on mobile */
+  * {
+    backdrop-filter: none !important;
+  }
+
+  #pagination {
+    display: none;
+  }
+}
+
+/* Optimize backdrop-filter usage */
+.backdrop-blur-sm,
+.backdrop-blur-md,
+.backdrop-blur-lg {
+  will-change: backdrop-filter;
+}
+
+/* Optimize transform animations */
+.transform,
+.translate-x-0,
+.translate-y-0,
+.scale-100,
+.rotate-0 {
+  will-change: transform;
+}
+
+/* Optimize opacity transitions */
+.opacity-0,
+.opacity-100 {
+  will-change: opacity;
+}
+
+canvas {
+  pointer-events: none;
+}
+
+/* 
+#pagination li {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+#pagination li.bg-white {
+  background-color: white;
+}
+
+#pagination li:not(.bg-white) {
+  border: 2px solid white;
+} */
+
+@media (max-width: 640px) {
+  .experience-header {
+    margin-bottom: 0.5rem; /* Adjust as needed */
   }
 }

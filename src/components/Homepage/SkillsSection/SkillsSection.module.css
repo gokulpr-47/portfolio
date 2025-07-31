@@ -1,0 +1,19 @@
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(3px);
+  }
+}
+
+.skills-heading::after {
+  content: "";
+  clear: both;
+}
+
+.islandWrapper {
+  transform: translate(-50%, -50%);
+  animation: floatUpDown 3s ease-in-out infinite;
+}
