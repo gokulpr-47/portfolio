@@ -103,7 +103,7 @@ export default function ExperienceSection() {
         </h2>
       </div>
       {/* Experience Timeline */}
-      <div className="w-full flex items-start justify-center flex-1 overflow-scroll">
+      <div className="w-full flex items-start justify-center flex-1 overflow-y-auto scrollbar-hidden">
         <div className="w-full max-w-5xl mx-auto">
           <div className="relative">
             {/* Timeline Line */}

@@ -547,7 +547,7 @@ export default function ProjectSection() {
   return (
     <section
       ref={containerRef}
-      className="relative z-10 h-screen flex flex-col overflow-hidden"
+      className="relative z-10 flex flex-col items-center px-4 sm:px-8 md:px-16 h-[90vh] sm:h-dvh min-h-[80vh] sm:min-h-screen py-4 sm:py-8 md:py-12 w-full overflow-hidden"
     >
       {/* Optimized Background Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
@@ -567,29 +567,26 @@ export default function ProjectSection() {
 
       {/* Fixed Header */}
       <div
-        className={`flex-shrink-0 py-6 sm:py-8 px-4 sm:px-6 text-center transition-all duration-1000 ${
+        className={`w-full flex flex-col items-center justify-center relative mb-8 sm:mb-12 transition-all duration-1000 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        <div className="max-w-6xl mx-auto">
-          <h2
-            className={`${prompt.className} text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent relative`}
-          >
-            Featured Projects
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-400/20 to-purple-400/20 blur-lg opacity-50"></div>
-          </h2>
-          <p
-            className={`${karla.className} text-sm sm:text-base text-white/70 max-w-2xl mx-auto relative z-10 px-4`}
-          >
-            Explore my latest work showcasing modern web development, innovative
-            solutions, and creative problem-solving.
-          </p>
-        </div>
+        <h2
+          className={`${prompt.className} text-center text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-3 sm:mb-4`}
+        >
+          Featured Projects
+        </h2>
+        <p
+          className={`${karla.className} text-sm sm:text-base text-white/70 max-w-2xl mx-auto relative z-10 px-4 text-center`}
+        >
+          Explore my latest work showcasing modern web development, innovative
+          solutions, and creative problem-solving.
+        </p>
       </div>
 
       {/* Scrollable Project Cards Container */}
-      <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
+      <div className="w-full flex items-start justify-center flex-1 overflow-y-auto scrollbar-hidden">
+        <div className="w-full max-w-6xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 pb-6 sm:pb-8">
             {PROJECTS.map((project) => {
               const isHovered = hoveredProject === project.id;
@@ -613,38 +610,6 @@ export default function ProjectSection() {
           </div>
         </div>
       </div>
-
-      {/* Fixed Call to Action Section */}
-      {/* <div
-        className={`flex-shrink-0 py-4 sm:py-6 px-4 sm:px-6 text-center transition-all duration-1000 delay-500 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
-      >
-        <p
-          className={`${karla.className} text-white/70 mb-4 sm:mb-6 px-4 text-sm sm:text-base`}
-        >
-          Interested in working together? Let&apos;s create something amazing!
-        </p>
-        <a
-          href="#about"
-          className={`${karla.className} inline-flex items-center gap-2 bg-gradient-to-r from-blue-400 to-purple-400 hover:from-blue-500 hover:to-purple-500 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-all duration-300 text-sm sm:text-base font-medium shadow-lg hover:shadow-xl hover:scale-105`}
-        >
-          Get In Touch
-          <svg
-            className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M17 8l4 4m0 0l-4 4m4-4H3"
-            />
-          </svg>
-        </a>
-      </div> */}
 
       {/* Optimized CSS for animations */}
       <style jsx>{`

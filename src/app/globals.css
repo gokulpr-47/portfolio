@@ -130,6 +130,16 @@ body {
   background: rgba(59, 130, 246, 0.5);
 }
 
+/* Hide scrollbar utility class */
+.scrollbar-hidden {
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
 /* Performance optimizations for mobile */
 @media (max-width: 768px) {
   .card-3d {
